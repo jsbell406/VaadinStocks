@@ -1,2 +1,2 @@
 # VaadinStocks
-Custom frong end for stock analyzer 
+Custom front end for stock analyzer 
