@@ -1,13 +1,13 @@
-package com.james.vaadinstocks;
+package com.james.VaadinStocks;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class VaadinstocksApplication {
+public class VaadinStocksApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VaadinstocksApplication.class, args);
+		SpringApplication.run(VaadinStocksApplication.class, args);
 	}
 
 }

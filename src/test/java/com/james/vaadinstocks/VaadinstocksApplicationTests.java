@@ -1,13 +1,9 @@
-package com.james.vaadinstocks;
+package com.james.VaadinStocks;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class VaadinstocksApplicationTests {
+class VaadinStocksApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+	
 }
