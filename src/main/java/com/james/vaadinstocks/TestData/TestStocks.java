@@ -45,5 +45,33 @@ public class TestStocks {
 		return stocks;
 	}
 	
+	public static List<Stock> getAllStocks(){
+		List<Stock> stocks = new ArrayList<>();
+		
+		stocks.add(new Stock("TSLA", "Tesla Motors"));
+		stocks.add(new Stock("TTWO", "Take-Two Interactice Software"));
+		stocks.add(new Stock("BA", "The Boeing Company"));
+		stocks.add(new Stock("LMT", "Lockheed Martin Corporation"));
+		stocks.add(new Stock("AAPL", "Apple"));
+		stocks.add(new Stock("AA", "Alcoa"));
+		stocks.add(new Stock("ABBV", "AbbVie"));
+		stocks.add(new Stock("BYND", "Beyond Meat"));
+		stocks.add(new Stock("NOC", "Northrop Grumman"));
+		stocks.add(new Stock("NFLX", "Netflix"));
+		stocks.add(new Stock("MSFT", "Microsoft"));
+		stocks.add(new Stock("NVDA", "Nvidia"));
+		stocks.add(new Stock("AMZN", "Amazon"));
+		stocks.add(new Stock("INTC", "Intel"));
+		stocks.add(new Stock("DIS", "The Walt Disney"));
+		stocks.add(new Stock("FSLR", "First Solar"));
+		stocks.add(new Stock("UBER", "Uber"));
+		stocks.add(new Stock("SPOT", "Spotify"));
+		stocks.add(new Stock("TWTR", "Twitter"));
+		stocks.add(new Stock("ONTX", "Onconova Therapeutics"));
+		stocks.add(new Stock("SPCE", "Virgin Galactic"));
+		
+		return stocks;
+	}
+	
 	
 }

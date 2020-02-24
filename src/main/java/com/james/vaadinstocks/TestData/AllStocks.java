@@ -20,17 +20,14 @@ public class AllStocks {
 	
 	public List<Stock> find(String search){
 		List<Stock> filteredList = new ArrayList<>();
-		List<Stock> searchList = new ArrayList<>();
-		
-		//TODO:
-		
-		//populate searchList with stocks
-		//populate filteredList using search string
-		//have search logic search both company name and ticker. 
-		//	have logic return results that contains even a portion of the search string.
+		List<Stock> searchList = TestStocks.getAllStocks();
+	
 		
 		filteredList.clear();
-		// first search logic attempt..... NOT TESTED
+	
+		if(search.isBlank())
+			return filteredList;
+		
 		searchList.forEach(s -> {
 			if(s.getLongName().contains(search) | s.getTicker().contains(search))
 				filteredList.add(s);		

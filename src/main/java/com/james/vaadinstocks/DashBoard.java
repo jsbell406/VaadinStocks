@@ -53,16 +53,13 @@ public class DashBoard extends VerticalLayout {
 		
 		addToWatchList.addColumn(Stock::getLongName).setHeader("Company");
 		addToWatchList.addColumn(Stock::getTicker).setHeader("Ticker");
+	
+		add(filterText,addToWatchList);
 		
+		setSizeFull();
 		
-		//TODO:
-		//add grid with filtertext
-		
-		//setSizeFull();
-		
-		//updateList();
-		//END TODO:
-		
+		updateList();
+				
 	}
 	
 	public void updateList() {
