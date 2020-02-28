@@ -16,7 +16,6 @@ public class Stock implements Comparable<Stock> {
 		this.longName = longName;
 	}
 
-	
 	public int getId() {
 		return id;
 	}

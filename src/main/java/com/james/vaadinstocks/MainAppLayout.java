@@ -24,7 +24,8 @@ public class MainAppLayout extends AppLayout{
 		addToNavbar(new DrawerToggle());
 		
 		VerticalLayout vlDrawer = new VerticalLayout();
-		vlDrawer.add(new RouterLink("Home", DashBoard.class));
+		vlDrawer.add(new RouterLink("Dashboard", DashBoard.class));
+		vlDrawer.add(new RouterLink("Testing", Testing.class) );
 		
 		addToDrawer(vlDrawer);
 		

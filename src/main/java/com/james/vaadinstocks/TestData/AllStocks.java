@@ -29,7 +29,7 @@ public class AllStocks {
 			return filteredList;
 		
 		searchList.forEach(s -> {
-			if(s.getLongName().contains(search) | s.getTicker().contains(search))
+			if(s.getLongName().toUpperCase().contains(search.toUpperCase()) | s.getTicker().toUpperCase().contains(search.toUpperCase())) 
 				filteredList.add(s);		
 		});		
 		return filteredList;		
