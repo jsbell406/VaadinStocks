@@ -6,11 +6,12 @@ import java.util.List;
 import com.james.VaadinStocks.TestData.AllStocks;
 import com.james.VaadinStocks.TestData.TestStocks;
 import com.james.VaadinStocks.ViewModels.Stock;
+import com.james.VaadinStocks.util.DashboardController;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.NativeButton;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -27,14 +28,21 @@ public class DashBoard extends VerticalLayout {
 	 */
 	private static final long serialVersionUID = -1738386035616772502L;
 	private TextField filterText;
-	private Grid<Stock> watchList;
+	private Grid<Stock> watchlist;
 	private Grid<Stock> addToWatchList;
 	private AllStocks allStocks = AllStocks.getInstance();
+	private DashboardController db;
 	
+
 	public DashBoard() {
 		super();
+		
+		db = new DashboardController();
+		
 		filterText = new TextField();
-		watchList = new Grid<>();
+		
+		buildWatchlist();
+		
 		addToWatchList = new Grid<>();
 				
 		add(new Text("Welcome to your watchlist"));
@@ -46,14 +54,11 @@ public class DashBoard extends VerticalLayout {
 		
 		
 		
-		watchList.addColumn(Stock::getTicker).setHeader("Ticker");
-		watchList.addColumn(Stock::getCurrentPrice).setHeader("Price");
-		watchList.addColumn(Stock::getCurrentPercentage).setHeader("Percentage");
-		watchList.addComponentColumn(this::buildRemoveFromWatchlistButton);
 		
-		watchList.setItems(stockList);
 		
-		add(watchList);
+		//watchList.setItems(stockList);
+		
+		//add(watchList);
 				
 		add(new Text("Add Stocks to watchlist"));
 
@@ -74,11 +79,27 @@ public class DashBoard extends VerticalLayout {
 				
 	}
 	
+	private void populateWatchlist()
+	{
+		
+	}
+	
+	private void buildWatchlist(){
+		watchlist = new Grid<>();
+		
+		watchlist.addColumn(Stock::getTicker).setHeader("Ticker");
+		watchlist.addColumn(Stock::getCurrentPrice).setHeader("Price");
+		watchlist.addColumn(Stock::getCurrentPercentage).setHeader("Percentage");
+		watchlist.addComponentColumn(this::buildRemoveFromWatchlistButton);	
+		
+		add(watchlist);
+		
+	}
 	private Button buildRemoveFromWatchlistButton(Stock stock)
 	{
 		Button button = new Button(new Icon(VaadinIcon.MINUS));
 		
-		button.addClickListener(b -> removeStockFromWatchlist(stock));
+		button.addClickListener(b -> confirmRemoveStockFromWatchlist(stock));
 		
 		return button;
 	}
@@ -92,30 +113,42 @@ public class DashBoard extends VerticalLayout {
 		return button;
 	}
 	
-	private void removeStockFromWatchlist(Stock stock)
+	private void confirmRemoveStockFromWatchlist(Stock stock)
 	{    
-		boolean isRemove = false;
+		Div div = new Div();
+		
 	
 		Dialog dialog = new Dialog();
 		dialog.setCloseOnEsc(false);
 		dialog.setCloseOnOutsideClick(false);
 		
-		NativeButton confirmButton = new NativeButton("Confirm", event -> {
-			//isRemove = true;
+		div.add("Remove " + stock.getLongName());
+		
+		Button confirmButton = new Button("Confirm", event  -> {
+			removeStock(stock);
+			
 		    dialog.close();
 		});
-		NativeButton cancelButton = new NativeButton("Cancel", event -> {
-		   // isRemove = false;
+		Button cancelButton = new Button("Cancel", event -> {
+		   
 		    dialog.close();
 		    });
 		
-		dialog.add("Remove " + stock.getLongName());
+		
+		dialog.add(div);
 		dialog.add(confirmButton, cancelButton);
 		
 		dialog.open();
 	}
 	
-	
+	private void removeStock(Stock stock)
+	{
+		Dialog d = new Dialog();
+		
+		d.add(stock.getLongName() + " removed");
+		
+		d.open();
+	}
 	private void addStockToWatchlist(Stock stock) {
 		Dialog dialog = new Dialog();
 		dialog.add(stock.getLongName());

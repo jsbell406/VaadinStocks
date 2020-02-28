@@ -48,6 +48,33 @@ public class Stock implements Comparable<Stock> {
 		return longName;
 	}
 
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((ticker == null) ? 0 : ticker.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Stock other = (Stock) obj;
+		if (ticker == null) {
+			if (other.ticker != null)
+				return false;
+		} else if (!ticker.equals(other.ticker))
+			return false;
+		return true;
+	}
+
 	@Override
 	public int compareTo(Stock o) {
 		// TODO Auto-generated method stub

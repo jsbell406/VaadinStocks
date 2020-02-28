@@ -18,9 +18,6 @@ public class MainAppLayout extends AppLayout{
 	public MainAppLayout() {
 		super();
 		
-		//Image img = new Image("D:\\Repos\\VaadinStocks\\Images\\dollar-currency-money-us-dollar-47344.jpeg","Money");
-		//img.setHeight("44px");
-		
 		addToNavbar(new DrawerToggle());
 		
 		VerticalLayout vlDrawer = new VerticalLayout();
@@ -28,11 +25,6 @@ public class MainAppLayout extends AppLayout{
 		vlDrawer.add(new RouterLink("Testing", Testing.class) );
 		
 		addToDrawer(vlDrawer);
-		
-		
-		
-		
-		
 	}
 
 }
